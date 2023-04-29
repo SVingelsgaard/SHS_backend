@@ -19,12 +19,12 @@ from rest_framework import routers
 from application import views
 
 router = routers.DefaultRouter()
-router.register(r'BusTimes', views.BusTime)
-router.register(r'groups', views.GroupViewSet)
+router.register(r'BusTimes', views.BusTimesViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('', include(router.urls)),
+    path('bustimes/', views.BusTimesView.as_view(), name='bustimesAW'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
