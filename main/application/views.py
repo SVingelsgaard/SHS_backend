@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from rest_framework import viewsets
@@ -20,3 +20,6 @@ class BusTimesView(APIView):
             serializer.save()
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
+    
+def home(request):#test view
+    return render(request, "home.html")
