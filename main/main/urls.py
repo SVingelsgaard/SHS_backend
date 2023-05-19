@@ -26,5 +26,6 @@ router.register(r'BusTimes', views.BusTimesViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('bustimes/', views.BusTimesView.as_view(), name='bustimesAW'),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('home/', views.home, name='home'),
 ]
