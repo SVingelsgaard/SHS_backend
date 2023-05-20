@@ -2,7 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-from application.scraper import run_scraper
+from api.scraper import run_scraper
 
 
 def main():
