@@ -10,8 +10,8 @@ from .scraper import run_scrape
 
 
 def apiHomescreen(request):
-    return render(request, "templates/index.html")
-
+    return render(request, "api/templates/api_homescreen.html")
+ 
 @api_view(['GET'])
 def getBustimes(request):
     bustime = run_scrape()
