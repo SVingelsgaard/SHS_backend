@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     path('bustimes/', views.getBustimes),
-    path('', views.apiHomescreen),
+    path('', views.apiHomescreen, name='apiHomescreen'),
 ]

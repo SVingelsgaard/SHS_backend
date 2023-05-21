@@ -10,7 +10,7 @@ from .scraper import run_scrape
 
 
 def apiHomescreen(request):
-    return render(request, "index.html")
+    return render(request, "templates/index.html")
 
 @api_view(['GET'])
 def getBustimes(request):
