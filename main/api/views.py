@@ -1,7 +1,4 @@
-from django.shortcuts import render, redirect
-
-# Create your views here.
-from rest_framework import viewsets
+from django.shortcuts import render
 from .serializers import BusTimeSerializer
 from .models import BusTime
 from rest_framework.decorators import api_view
