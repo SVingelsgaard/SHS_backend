@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
-
+import os
 import dj_database_url#for vercel database
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -86,12 +86,21 @@ WSGI_APPLICATION = 'main.wsgi.application'
 
 # Database. (Vercel postgres)
 DATABASES = {
-    'default': dj_database_url.config(
-        'postgres://default:I6wFvEuOLjP1@ep-black-mud-482295.eu-central-1.postgres.vercel-storage.com:5432/verceldb'
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('verceldb'),
+        'USER': os.environ.get('default'),
+        'PASSWORD': os.environ.get('I6wFvEuOLjP1'),
+        'HOST': os.environ.get('ep-black-mud-482295-pooler.eu-central-1.postgres.vercel-storage.com'),
+        'PORT': '',
+    }
 }
 
 
+
+print("reee")
+print(os.environ.get('DATABASE_URL'))
+print("reeeee")
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
