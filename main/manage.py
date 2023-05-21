@@ -2,7 +2,6 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-from application.scraper import run_scraper
 
 
 def main():
@@ -17,7 +16,6 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
-    run_scraper()
 
 
 if __name__ == '__main__':

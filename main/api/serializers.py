@@ -5,4 +5,4 @@ from .models import BusTime
 class BusTimeSerializer(serializers.ModelSerializer):
     class Meta:
         model = BusTime
-        fields = ['id', 'time', 'destination', 'bus_number']
+        fields = ['location', 'destination', 'bus_number', 'times']
