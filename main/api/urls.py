@@ -3,6 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    path('bustimes/', views.getData),
+    path('bustimes/', views.getBustimes),
     path('', views.apiHomescreen),
 ]
