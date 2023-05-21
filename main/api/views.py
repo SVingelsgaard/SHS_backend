@@ -7,9 +7,13 @@ from .models import BusTime
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+def apiHomescreen(request):
+    return render(request, "index.html")
+
 @api_view(['GET'])
 def getData(request):
     serializer = BusTimeSerializer(data=request.data, many=True)
+    print('get triggerd')
     return Response({'name':'sigurd','age':20})
 '''    if serializer.is_valid():
         serializer.save()
