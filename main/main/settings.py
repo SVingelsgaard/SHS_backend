@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1', 
     '.vercel.app',
-    'https://celestina.sigurdvingelsgaard.com',
+    'celestina.sigurdvingelsgaard.com',
 ]
 
 
