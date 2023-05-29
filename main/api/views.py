@@ -12,8 +12,9 @@ def apiHomescreen(request):
 @api_view(['GET'])
 def getBustimes(request):
     bustime = run_scrape()
-    return (HttpResponse("test"))
     serializer = BusTimeSerializer(data=bustime, many=False)
+    return (HttpResponse("test"))
+    
     
     if serializer.is_valid():
         serializer.save()
