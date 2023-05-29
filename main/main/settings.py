@@ -88,19 +88,14 @@ WSGI_APPLICATION = 'main.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('verceldb'),
-        'USER': os.environ.get('default'),
-        'PASSWORD': os.environ.get('I6wFvEuOLjP1'),
-        'HOST': os.environ.get('ep-black-mud-482295-pooler.eu-central-1.postgres.vercel-storage.com'),
-        'PORT': '',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'h1vgreSPKMf2D2bz4TKL',
+        'HOST': 'containers-us-west-45.railway.app',
+        'PORT': '7605',
     }
 }
 
-
-
-print("reee")
-print(os.environ.get('DATABASE_URL'))
-print("reeeee")
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
