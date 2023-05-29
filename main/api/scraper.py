@@ -14,4 +14,4 @@ def create_bus_time(location, destination, bus_number, time_values):
 
 def run_scrape():
     #bustime = create_bus_time('some_location', 'some_destination', 2, ['22.10','22.11'])
-    return {'location':'some_location', 'destination':'some_destination', 'bus_number':2, 'times':'22.10'}
+    return {'location':'Ladeveien', 'destination':'Lund via Lade-Sentrum-Kolstad', 'bus_number':2, 'times':'22.10'}
