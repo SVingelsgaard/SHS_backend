@@ -13,7 +13,6 @@ def apiHomescreen(request):
 def getBustimes(request):
     bustime = run_scrape()
     serializer = BusTimeSerializer(data=bustime, many=False)
-    return (HttpResponse("test"))
     
     
     if serializer.is_valid():
