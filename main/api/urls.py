@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('bustimes/', views.getBustimes),
-    path('one_or_zero/', views.one_or_zero, name='one_or_zero'),
+    path('openDoorButton/', views.openDoorButton, name='openDoorButton'),
+    path('openDoorMCEndpoint/', views.openDoorMCEndpoint, name='openDoorMCEndpoint'),
     path('', views.apiHomescreen, name='apiHomescreen'),
 ]

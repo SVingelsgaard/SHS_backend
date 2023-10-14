@@ -22,8 +22,16 @@ def getBustimes(request):
     else:
         return Response(serializer.errors, status=400)
     
-def one_or_zero(request):
-    # You can define your logic to determine the value (1 or 0) here.
-    value = 1  # Replace with your logic
+def openDoorButton(request):
+    if request.method == "POST":
+        data = request.POST
+        if "value" in data:
+            # Perform any other actions you need here
+            return JsonResponse({"status": "Success"})
+        else:
+            return JsonResponse({"status": "Error: Value not provided"}, status=400)
 
-    return JsonResponse({'result': value})
+def openDoorMCEndpoint(request):
+    openDoor = 1
+    return JsonResponse({'openDoor': openDoor})
+    
