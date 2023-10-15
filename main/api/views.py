@@ -32,6 +32,6 @@ def openDoorButton(request):
             return JsonResponse({"status": "Error: Value not provided"}, status=400)
 
 def openDoorMCEndpoint(request):
-    openDoor = 1
+    openDoor = 0
     return JsonResponse({'openDoor': openDoor})
     
