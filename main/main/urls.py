@@ -26,6 +26,6 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Homescreen, name='Homescreen'),
-    path('api/', include('api.urls')),
+    path('v1/', include('api.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

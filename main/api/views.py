@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from .scraper import run_scrape
 from django.http import HttpResponse
 from django.http import JsonResponse
+import requests
 
 def apiHomescreen(request):
     return render(request, "api/templates/api_homescreen.html")
@@ -31,7 +32,26 @@ def openDoorButton(request):
         else:
             return JsonResponse({"status": "Error: Value not provided"}, status=400)
 
-def openDoorMCEndpoint(request):
-    openDoor = 0
-    return JsonResponse({'openDoor': openDoor})
+def openDoorEP(request):
+    try:
+        # Define the ESP URL (replace with your setup's URL)
+        esp_url = "http://your_esp_external_address:your_port/openDoor"
+        
+        # Data to send
+        data_to_send = {
+            "opendoor": True
+        }
+        
+        # Send POST request
+        response = requests.post(esp_url, json=data_to_send)
+        
+        # Check if request was successful
+        if response.status_code == 200:
+            return JsonResponse({"status": "success", "message": "Request sent successfully!"})
+        else:
+            return JsonResponse({"status": "error", "message": f"ESP returned {response.status_code}: {response.text}"})
+    except requests.ConnectionError:
+        return JsonResponse({"status": "error", "message": "Failed to connect to ESP"})
+    except Exception as e:
+        return JsonResponse({"status": "error", "message": str(e)})
     
