@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from .scraper import run_scrape
 from django.http import HttpResponse
 from django.http import JsonResponse
+import requests
 import os
 
 def apiHomescreen(request):
@@ -43,10 +44,10 @@ def openDoorEP(request):
         }
         
         # Send POST request
-        response = request.post(esp_url, json=data_to_send)
+        response = requests.post(esp_url, json=data_to_send)
         
         # Check if request was successful
-        if response.status_code == 200:
+        if responses.status_code == 200:
             return JsonResponse({"status": "success", "message": "Request sent successfully!"})
         else:
             return JsonResponse({"status": "error", "message": f"ESP returned {response.status_code}: {response.text}"})
