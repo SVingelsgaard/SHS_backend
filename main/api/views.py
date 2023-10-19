@@ -25,14 +25,6 @@ def getBustimes(request):
     else:
         return Response(serializer.errors, status=400)
     
-def openDoorButton(request):
-    if request.method == "POST":
-        data = request.POST
-        if "value" in data:
-            # Perform any other actions you need here
-            return JsonResponse({"status": "Success"})
-        else:
-            return JsonResponse({"status": "Error: Value not provided"}, status=400)
 
 def openDoorEP(request):
     esp_url = os.environ.get('ESP_EP')
