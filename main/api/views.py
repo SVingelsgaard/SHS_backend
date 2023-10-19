@@ -5,8 +5,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .scraper import run_scrape
 from django.http import HttpResponse
+import json
+import urllib.request
 from django.http import JsonResponse
-import requests
 import os
 
 def apiHomescreen(request):
@@ -34,25 +35,33 @@ def openDoorButton(request):
             return JsonResponse({"status": "Error: Value not provided"}, status=400)
 
 def openDoorEP(request):
+    esp_url = os.environ.get('ESP_EP')
+    
+    if not esp_url:
+        return JsonResponse({"status": "error", "message": "ESP endpoint not configured!"})
+    
+    data_to_send = {
+        "opendoor": True
+    }
+    headers = {
+        'Content-Type': 'application/json'
+    }
+
     try:
-        # Define the ESP URL. is in the enviremental variables
-        esp_url = os.environ.get('ESP_EP')
+        json_data = json.dumps(data_to_send).encode('utf-8')
+        req = urllib.request.Request(esp_url, data=json_data, headers=headers)
+        response = urllib.request.urlopen(req)
+        response_data = response.read().decode()
         
-        # Data to send
-        data_to_send = {
-            "opendoor": True
-        }
-        
-        # Send POST request
-        response = requests.post(esp_url, json=data_to_send)
-        
-        # Check if request was successful
-        if responses.status_code == 200:
+        # Here you may want to further process the response_data if needed
+
+        if response.status == 200:
             return JsonResponse({"status": "success", "message": "Request sent successfully!"})
         else:
-            return JsonResponse({"status": "error", "message": f"ESP returned {response.status_code}: {response.text}"})
-    except request.ConnectionError:
-        return JsonResponse({"status": "error", "message": "Failed to connect to ESP"})
+            return JsonResponse({"status": "error", "message": f"ESP returned {response.status}: {response_data}"})
+
+    except urllib.error.URLError as e:
+        return JsonResponse({"status": "error", "message": "Failed to connect to ESP. Error: " + str(e)})
     except Exception as e:
         return JsonResponse({"status": "error", "message": str(e)})
     
