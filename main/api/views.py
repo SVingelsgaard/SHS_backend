@@ -7,6 +7,7 @@ from .scraper import run_scrape
 from django.http import HttpResponse
 from django.http import JsonResponse
 import requests
+import os
 
 def apiHomescreen(request):
     return render(request, "api/templates/api_homescreen.html")
@@ -34,8 +35,8 @@ def openDoorButton(request):
 
 def openDoorEP(request):
     try:
-        # Define the ESP URL (replace with your setup's URL)
-        esp_url = "http://your_esp_external_address:your_port/openDoor"
+        # Define the ESP URL. is in the enviremental variables
+        esp_url = os.environ.get('ESP_EP')
         
         # Data to send
         data_to_send = {

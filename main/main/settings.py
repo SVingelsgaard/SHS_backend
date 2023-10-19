@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
+from decouple import config
 import os
 import dj_database_url#for vercel database
 
@@ -24,6 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-f+do=6hr^=f01nyv+#h&b2kee+kvbb975(y3c-rso8^pt)ey9$'
+
+ESP_EP = os.environ.get('ESP_EP')
+
+SECRET_KEY = config('ESP_EP', default='default_secret_key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
