@@ -6,7 +6,6 @@ from rest_framework.response import Response
 from .scraper import run_scrape
 from django.http import HttpResponse
 from django.http import JsonResponse
-import requests
 import os
 
 def apiHomescreen(request):
